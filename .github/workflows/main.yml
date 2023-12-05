@@ -1,29 +1,15 @@
-name: Deploy
+...
+steps:
+  - name: Checkout Repository
+    uses: actions/checkout@v2
 
-on:
-  push:
-    branches:
-      - main
+  - name: Set up Node.js
+    uses: actions/setup-node@v4
+    with:
+      node-version: '14'
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Deploy to Server
-        uses: appleboy/ssh-action@master
-        with:
-          host: 185.11.145.253
-          username: modsubhu
-          key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDJa012huWVKlMvYzeRgMu7ww9WebF/nlyivsZY1IybF8mo6zy+/s6th3dGU+3yxOVHt3xrFak/JudshRS7FFeaHKanqbsFIfYSSb6oX5DwGUJWK7LbfbxoOrtDnkJaftZDUSEs7myHyduzLDTSwnWGcsvemyJXziL8jsiXyH8
-          port: 2082
-          script: |
-            cd home/modsubhu/public_html/uploadvip.tk/login
-            npm install
-            
+  - name: Install Dependencies
+    run: |
+      cd /home/modsubhu/public_html/uploadvip.tk/login  # Adjust this path according to your project structure
+      npm install
+  ...
