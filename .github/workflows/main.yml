@@ -1,15 +1,25 @@
-...
-steps:
-  - name: Checkout Repository
-    uses: actions/checkout@v2
+name: Your Workflow Name
 
-  - name: Set up Node.js
-    uses: actions/setup-node@v4
-    with:
-      node-version: '14'
+on:
+  push:
+    branches:
+      - main  # Adjust the branch name accordingly
 
-  - name: Install Dependencies
-    run: |
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '14'
+
+      - name: Install Dependencies
+        run: | 
       cd /home/modsubhu/public_html/uploadvip.tk/login  # Adjust this path according to your project structure
       npm install
   ...
